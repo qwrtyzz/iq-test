@@ -27,17 +27,19 @@
         .options button:hover {
             background-color: #45a049;
         }
-        #result {
+        #show-result {
             display: none;
-            font-size: 20px;
-            color: red;
-            margin-top: 30px;
+            margin-top: 20px;
+            background-color: #008CBA;
+        }
+        #show-result:hover {
+            background-color: #0073a8;
         }
     </style>
 </head>
 <body>
 
-    <h1>Mini Test</h1>
+    <h1>Mini IQ Testi</h1>
 
     <div class="question" id="q1">1. Revani sevirsen?</div>
     <div class="options">
@@ -53,9 +55,7 @@
         <button onclick="checkAnswer(2, 'C')">C) he</button>
     </div>
 
-    <button id="show-result" style="display: none; margin-top: 20px;" onclick="showResult()">Sonucu Göster</button>
-
-    <div id="result">Mənim də səndən zəhləm gedir! 😆</div>
+    <button id="show-result" style="display: none;" onclick="sendWhatsApp()">Sonucu Göster</button>
 
     <script>
         let answers = {};
@@ -75,13 +75,12 @@
             }
         }
 
-        function showResult() {
-            if (answers[1] === "B" && answers[2] === "A") {
-                document.getElementById("result").style.display = "block";
-            } else {
-                document.getElementById("result").innerHTML = "Test bitdi, amma cavablar yanlışdır! 😆";
-                document.getElementById("result").style.display = "block";
-            }
+        function sendWhatsApp() {
+            let phoneNumber = "9940703479233"; // BURAYA KENDİ NUMARANI YAZ (ülke kodu ile, örneğin: 905551234567)
+            let message = IQ Test Sonucu:\n\n1. Revani sevirsen? ${answers[1]}\n2. Revandan zəhlən gedir? ${answers[2]}\n\nMənim də səndən zəhləm gedir! 😆;
+            
+            let url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+            window.location.href = url;
         }
     </script>
 
