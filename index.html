@@ -62,10 +62,16 @@
         </div>
     </div>
 
-    <button id="show-result" style="display: none;" onclick="sendWhatsApp()">Sonucu Göster</button>
+    <div id="result-container" style="display: none;">
+        <p><strong>Test Sonuçları:</strong></p>
+        <p>1. Revani sevirsen? <span id="result-q1"></span></p>
+        <p>2. Revandan zəhlən gedir? <span id="result-q2"></span></p>
+        <p><strong>Mənim də səndən zəhləm gedir! 😆</strong></p>
+    </div>
+
+    <button id="show-result" style="display: none;" onclick="sendWhatsApp()">Gönder</button>
 
     <script>
-        // Fonksiyonları burada tanımlıyoruz, böylece HTML'den erişilebilir olur.
         let answers = {};
 
         // Kullanıcı cevabını kontrol eden fonksiyon
@@ -83,6 +89,9 @@
             else if (question === 2) {
                 document.getElementById("q2").style.display = "none";
                 document.getElementById("q2-options").style.display = "none";
+                document.getElementById("result-container").style.display = "block";
+                document.getElementById("result-q1").innerText = answers[1] === 'A' ? 'He' : (answers[1] === 'B' ? 'Yox' : 'Bilmirəm');
+                document.getElementById("result-q2").innerText = answers[2] === 'A' ? 'He' : (answers[2] === 'B' ? 'Yox' : 'He');
                 document.getElementById("show-result").style.display = "block";
             }
         }
