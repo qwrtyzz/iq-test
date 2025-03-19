@@ -65,30 +65,36 @@
     <button id="show-result" style="display: none;" onclick="sendWhatsApp()">Sonucu Göster</button>
 
     <script>
-        let answers = {};
+        document.addEventListener("DOMContentLoaded", function() {
+            let answers = {};
 
-        function checkAnswer(question, answer) {
-            answers[question] = answer;
-            
-            if (question === 1) {
-                document.getElementById("q1").style.display = "none";
-                document.getElementById("q1-options").style.display = "none";
-                document.getElementById("q2").style.display = "block";
-                document.getElementById("q2-options").style.display = "block";
-            } else if (question === 2) {
-                document.getElementById("q2").style.display = "none";
-                document.getElementById("q2-options").style.display = "none";
-                document.getElementById("show-result").style.display = "block";
+            function checkAnswer(question, answer) {
+                answers[question] = answer;
+                
+                if (question === 1) {
+                    document.getElementById("q1").style.display = "none";
+                    document.getElementById("q1-options").style.display = "none";
+                    document.getElementById("q2").style.display = "block";
+                    document.getElementById("q2-options").style.display = "block";
+                } else if (question === 2) {
+                    document.getElementById("q2").style.display = "none";
+                    document.getElementById("q2-options").style.display = "none";
+                    document.getElementById("show-result").style.display = "block";
+                }
             }
-        }
 
-        function sendWhatsApp() {
-            let phoneNumber = "9940703479233"; // BURAYA KENDİ NUMARANI YAZ
-            let message = IQ Test Sonucu:\n\n1. Revani sevirsen? ${answers[1]}\n2. Revandan zəhlən gedir? ${answers[2]}\n\nMənim də səndən zəhləm gedir! 😆;
-            
-            let url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
-            window.location.href = url;
-        }
+            function sendWhatsApp() {
+                let phoneNumber = "9940703479233"; // BURAYA KENDİ NUMARANI YAZ
+                let message = IQ Test Sonucu:\n\n1. Revani sevirsen? ${answers[1]}\n2. Revandan zəhlən gedir? ${answers[2]}\n\nMənim də səndən zəhləm gedir! 😆;
+                
+                let url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+                window.location.href = url;
+            }
+
+            // JavaScript fonksiyonlarını global hale getiriyoruz
+            window.checkAnswer = checkAnswer;
+            window.sendWhatsApp = sendWhatsApp;
+        });
     </script>
 
 </body>
