@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IQ Testi</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      font-size: 18px;
+      color: #555;
+    }
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>IQ Testi</h1>
+  <p>IQ'nuzu ölçmek için lütfen aşağıdaki soruya cevap verin:</p>
+  <p><strong>2 + 2 = ?</strong></p>
+
+  <button class="button" onclick="showResult()">Cevapla</button>
+
+  <div id="result" style="display:none; margin-top: 30px;">
+    <h2>Sonuç:</h2>
+    <p>IQ'nuz çok yüksek! Gerçekten zekisiniz!</p>
+    <p>Ama, şaka! (IQ testi bitmedi!)</p>
+  </div>
+
+  <script>
+    function showResult() {
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
