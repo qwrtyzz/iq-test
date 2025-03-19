@@ -66,32 +66,35 @@
 
     <script>
         // Fonksiyonları burada tanımlıyoruz, böylece HTML'den erişilebilir olur.
-        document.addEventListener("DOMContentLoaded", function() {
-            let answers = {};
+        let answers = {};
 
-            window.checkAnswer = function(question, answer) {
-                answers[question] = answer;
+        // Kullanıcı cevabını kontrol eden fonksiyon
+        function checkAnswer(question, answer) {
+            answers[question] = answer;
 
-                if (question === 1) {
-                    document.getElementById("q1").style.display = "none";
-                    document.getElementById("q1-options").style.display = "none";
-                    document.getElementById("q2").style.display = "block";
-                    document.getElementById("q2-options").style.display = "block";
-                } else if (question === 2) {
-                    document.getElementById("q2").style.display = "none";
-                    document.getElementById("q2-options").style.display = "none";
-                    document.getElementById("show-result").style.display = "block";
-                }
-            };
+            // Eğer 1. soruya cevap verildiyse, 2. soruyu göster
+            if (question === 1) {
+                document.getElementById("q1").style.display = "none";
+                document.getElementById("q1-options").style.display = "none";
+                document.getElementById("q2").style.display = "block";
+                document.getElementById("q2-options").style.display = "block";
+            }
+            // Eğer 2. soruya cevap verildiyse, sonucu göster
+            else if (question === 2) {
+                document.getElementById("q2").style.display = "none";
+                document.getElementById("q2-options").style.display = "none";
+                document.getElementById("show-result").style.display = "block";
+            }
+        }
 
-            window.sendWhatsApp = function() {
-                let phoneNumber = "9940703479233"; // BURAYA KENDİ NUMARANI YAZ
-                let message = IQ Test Sonucu:\n\n1. Revani sevirsen? ${answers[1]}\n2. Revandan zəhlən gedir? ${answers[2]}\n\nMənim də səndən zəhləm gedir! 😆;
+        // WhatsApp mesajı gönderen fonksiyon
+        function sendWhatsApp() {
+            let phoneNumber = "9940703479233"; // BURAYA KENDİ NUMARANI YAZ
+            let message = IQ Test Sonucu:\n\n1. Revani sevirsen? ${answers[1]}\n2. Revandan zəhlən gedir? ${answers[2]}\n\nMənim də səndən zəhləm gedir! 😆;
 
-                let url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
-                window.location.href = url;
-            };
-        });
+            let url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
+            window.location.href = url;
+        }
     </script>
 
 </body>
