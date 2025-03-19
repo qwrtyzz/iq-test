@@ -31,6 +31,11 @@
             display: none;
             margin-top: 20px;
             background-color: #008CBA;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
         #show-result:hover {
             background-color: #0073a8;
@@ -41,18 +46,20 @@
 
     <h1>Mini IQ Testi</h1>
 
-    <div class="question" id="q1">1. Revani sevirsen?</div>
-    <div class="options">
-        <button onclick="checkAnswer(1, 'A')">A) he</button>
-        <button onclick="checkAnswer(1, 'B')">B) yox</button>
-        <button onclick="checkAnswer(1, 'C')">C) bilmirəm</button>
-    </div>
+    <div id="question-container">
+        <div class="question" id="q1">1. Revani sevirsen?</div>
+        <div class="options" id="q1-options">
+            <button onclick="checkAnswer(1, 'A')">A) he</button>
+            <button onclick="checkAnswer(1, 'B')">B) yox</button>
+            <button onclick="checkAnswer(1, 'C')">C) bilmirəm</button>
+        </div>
 
-    <div class="question" id="q2" style="display: none;">2. Revandan zəhlən gedir?</div>
-    <div class="options" id="q2-options" style="display: none;">
-        <button onclick="checkAnswer(2, 'A')">A) he</button>
-        <button onclick="checkAnswer(2, 'B')">B) yox</button>
-        <button onclick="checkAnswer(2, 'C')">C) he</button>
+        <div class="question" id="q2" style="display: none;">2. Revandan zəhlən gedir?</div>
+        <div class="options" id="q2-options" style="display: none;">
+            <button onclick="checkAnswer(2, 'A')">A) he</button>
+            <button onclick="checkAnswer(2, 'B')">B) yox</button>
+            <button onclick="checkAnswer(2, 'C')">C) he</button>
+        </div>
     </div>
 
     <button id="show-result" style="display: none;" onclick="sendWhatsApp()">Sonucu Göster</button>
@@ -65,7 +72,7 @@
             
             if (question === 1) {
                 document.getElementById("q1").style.display = "none";
-                document.querySelector(".options").style.display = "none";
+                document.getElementById("q1-options").style.display = "none";
                 document.getElementById("q2").style.display = "block";
                 document.getElementById("q2-options").style.display = "block";
             } else if (question === 2) {
@@ -76,7 +83,7 @@
         }
 
         function sendWhatsApp() {
-            let phoneNumber = "9940703479233"; // BURAYA KENDİ NUMARANI YAZ (ülke kodu ile, örneğin: 905551234567)
+            let phoneNumber = "9940703479233"; // BURAYA KENDİ NUMARANI YAZ
             let message = IQ Test Sonucu:\n\n1. Revani sevirsen? ${answers[1]}\n2. Revandan zəhlən gedir? ${answers[2]}\n\nMənim də səndən zəhləm gedir! 😆;
             
             let url = https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)};
